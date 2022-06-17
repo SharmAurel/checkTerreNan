@@ -3,6 +3,7 @@ package com.example.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
@@ -18,8 +19,9 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue
-    @Type(type="uuid-char")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    //@Type(type="uuid-char")
     private UUID uuidUser;
     @NotEmpty(message="role non-vide")
     private String role;
