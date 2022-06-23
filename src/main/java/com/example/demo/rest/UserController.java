@@ -50,4 +50,10 @@ public class UserController {
         userService.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/findnom/{nom}")
+    public ResponseEntity<User> getUserByNom(@PathVariable("nom") String nom){
+        User user = userService.findUserByNom(nom);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }
