@@ -9,29 +9,54 @@ import org.hibernate.annotations.Type;
 import javax.management.relation.Role;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@Table(name="user")
+public class User implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false,name = "id")
     private int id;
+    @Column(name="role")
     private RoleUser role;
     @NotEmpty(message="prenom non-vide")
+    @Column(name="prenom")
     private String prenom;
     @NotEmpty(message="nom non-vide")
+    @Column(name="nom")
     private String nom;
     @NotEmpty(message="username non-vide")
+    @Column(name="username")
     private String username;
+    @Column(name="mdp")
     @NotEmpty(message="mdp pas vide")
     private String mdp;
+    private String promo;
+    private String matiere;
 
+    public String getPromo() {
+        return promo;
+    }
+
+    public void setPromo(String promo) {
+        this.promo = promo;
+    }
+
+    public String getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(String matiere) {
+        this.matiere = matiere;
+    }
 
     public int getId() {
         return id;

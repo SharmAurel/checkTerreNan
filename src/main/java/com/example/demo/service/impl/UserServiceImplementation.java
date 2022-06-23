@@ -1,4 +1,5 @@
 package com.example.demo.service.impl;
+import com.example.demo.model.RoleUser;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
@@ -33,6 +34,7 @@ public class UserServiceImplementation implements UserService {
     public List<User> findAllUser(){
         return userRepository.findAll();
     }
+
 
     @Override
     public User updateUser(User users){

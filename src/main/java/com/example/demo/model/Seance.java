@@ -3,26 +3,37 @@ package com.example.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Seance {
+@Table(name="seance")
+public class Seance implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false,name = "id")
     int id;
-    @OneToOne(cascade = CascadeType.ALL)
-    User prof;
-    @OneToOne(cascade = CascadeType.ALL)
-    Promotion promotion;
+
+    @OneToOne(targetEntity = User.class,cascade=CascadeType.ALL)
+    @JoinColumn(name = "prof_id")
+    private User prof;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    Promotion promotion;
+    @Column(name="salle")
     String salle;
+    @Column(name="matiere")
     String matiere;
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name="date")
+    @DateTimeFormat(pattern="yyyy.MM.dd HH:mm:ss")
     Date date;
 
     public int getId() {
@@ -41,13 +52,6 @@ public class Seance {
         this.prof = prof;
     }
 
-//    public Promotion getPromotion() {
-//        return promotion;
-//    }
-//
-//    public void setPromotion(Promotion promotion) {
-//        this.promotion = promotion;
-//    }
 
     public String getSalle() {
         return salle;
