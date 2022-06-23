@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.management.relation.Role;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.UUID;
 
@@ -18,15 +17,47 @@ import java.util.UUID;
 @AllArgsConstructor
 public class User {
 
+
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    //@Type(type="uuid-char")
-    private UUID uuidUser;
-    @NotEmpty(message="role non-vide")
-    private String role;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
+    private int id;
+    private RoleUser role;
     @NotEmpty(message="username non-vide")
     private String username;
     @NotEmpty(message="mdp pas vide")
     private String mdp;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public RoleUser getRole() {
+        return role;
+    }
+
+    public void setRole(RoleUser role) {
+        this.role = role;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
 }
