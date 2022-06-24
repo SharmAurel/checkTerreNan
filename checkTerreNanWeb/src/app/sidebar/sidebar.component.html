@@ -1,0 +1,58 @@
+<mat-toolbar class="mat-elevation-z8">
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    Check Nanterre
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  
+      <h4 class="name">Menu</h4>
+  
+      <mat-divider></mat-divider>
+  
+      <div class="dropdown">
+        <button class="btn btn-basic dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span>Utilisateurs</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="/professeurs">Professeurs</a>
+          <a class="dropdown-item" routerLink="/etudiants">Etudiants</a>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/promotions">
+        <mat-icon></mat-icon>
+        <span>Promotions</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/matieres">
+        <mat-icon></mat-icon>
+        <span>Matières</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/seances">
+        <mat-icon></mat-icon>
+        <span>Séances</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/absences">
+        <mat-icon></mat-icon>
+        <span>Absences</span>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

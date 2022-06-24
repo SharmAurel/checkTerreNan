@@ -1,0 +1,45 @@
+<button mat-button class="btn btn-primary" routerLink="/adduser">
+    <span>Ajouter Utilisateur</span>
+</button>
+
+<table class="table"> <!--*ngfor sur  tableau d'objetc-->
+    <thead>
+      <tr>
+        <th scope="col">#</th> <!--user.nom-->
+        <th scope="col">Username</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>Carl</td>
+        <td><button type="submit" class="btn btn-primary" >Modifier</button> &nbsp;
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>Carli</td>
+        <td><button type="submit" class="btn btn-primary">Modifier</button> &nbsp;
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>Barry</td>
+        <td>Harry</td>
+        <td><button type="submit" class="btn btn-primary">Modifier</button> &nbsp;
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+
