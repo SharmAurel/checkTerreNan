@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -22,19 +24,14 @@ public class Seance implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false,updatable = false,name = "id")
     int id;
-
-    @OneToOne(targetEntity = User.class,cascade=CascadeType.ALL)
-    @JoinColumn(name = "prof_id")
-    private User prof;
-//    @OneToOne(cascade = CascadeType.ALL)
-//    Promotion promotion;
+    @NotEmpty
+    private String prof;
     @Column(name="salle")
     String salle;
     @Column(name="matiere")
     String matiere;
-    @Column(name="date")
-    @DateTimeFormat(pattern="yyyy.MM.dd HH:mm:ss")
-    Date date;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime date;
 
     public int getId() {
         return id;
@@ -44,11 +41,11 @@ public class Seance implements Serializable {
         this.id = id;
     }
 
-    public User getProf() {
+    public String getProf() {
         return prof;
     }
 
-    public void setProf(User prof) {
+    public void setProf(String prof) {
         this.prof = prof;
     }
 
@@ -69,11 +66,11 @@ public class Seance implements Serializable {
         this.matiere = matiere;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

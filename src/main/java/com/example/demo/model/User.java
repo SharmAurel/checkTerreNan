@@ -40,7 +40,7 @@ public class User implements Serializable {
     @NotEmpty(message="mdp pas vide")
     private String mdp;
     private String promo;
-    private String matiere;
+
 
     public String getPromo() {
         return promo;
@@ -48,14 +48,6 @@ public class User implements Serializable {
 
     public void setPromo(String promo) {
         this.promo = promo;
-    }
-
-    public String getMatiere() {
-        return matiere;
-    }
-
-    public void setMatiere(String matiere) {
-        this.matiere = matiere;
     }
 
     public int getId() {

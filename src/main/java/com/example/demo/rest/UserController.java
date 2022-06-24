@@ -21,16 +21,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<User> addUsers(@RequestBody User user){
-        User newUser = userService.createUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-    }
-
     @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUser(){
         List<User> user = userService.findAllUser();
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<User> addUsers(@RequestBody User user){
+        User newUser = userService.createUser(user);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/{id}")

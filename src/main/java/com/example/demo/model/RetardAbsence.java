@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -20,15 +22,13 @@ public class RetardAbsence {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false, name = "id")
     int id;
-    @NotEmpty
     RetardOuAbsence type;
     @NotEmpty
     String eleveNom;
     @NotEmpty
-    Seance cours;
-
-    @DateTimeFormat(pattern = "yyyy.MM.dd HH:mm:ss")
-    Date Date;
+    String cours;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    LocalDateTime date;
 
     int dureeRetard;
 
@@ -56,20 +56,20 @@ public class RetardAbsence {
         this.eleveNom = eleveNom;
     }
 
-    public Seance getCours() {
+    public String getCours() {
         return cours;
     }
 
-    public void setCours(Seance cours) {
+    public void setCours(String cours) {
         this.cours = cours;
     }
 
-    public java.util.Date getDate() {
-        return Date;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setDate(java.util.Date date) {
-        Date = date;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public int getDureeRetard() {

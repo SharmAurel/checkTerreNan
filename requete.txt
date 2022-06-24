@@ -1,0 +1,31 @@
+put add promotion
+http://localhost:8080/promotion/add
+{
+    "id":1,
+    "nomPromotion":"M2 APP MIAGE",
+  //  "etudiants":[ "Moha","Krish","Guigui"]
+}
+put add retard ou absence
+http://localhost:8080/retardAbsence/add
+{
+    "date": "2022-09-14 14:05:00",
+    "eleveNom":"Aurelien Sharma",
+    "type":"RETARD",
+    "dureeRetard":25,
+    "cours":"BI"
+}
+http://localhost:8080/seance/add
+{
+    "salle":"210A",
+    "matiere":"BDD",
+    "date":"2022-09-15 15:00:00",
+    "prof":"lom"
+}
+http://localhost:8080/user/add
+{
+    "role":"PROF",
+    "nom":"poizat",
+    "prenom":"pascal",
+    "username":"pp",
+    "mdp":"pp22"
+}

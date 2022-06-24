@@ -20,8 +20,9 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false,updatable = false)
     int id;
-    @NotEmpty
-    private List<String> etudiants = new ArrayList<>();
+//    @ElementCollection
+//    @CollectionTable(name = "user")
+//    List<String> nom = new ArrayList<>();
     @NotEmpty
     String nomPromotion;
 
@@ -37,21 +38,23 @@ public class Promotion {
         return id;
     }
 
-    public List<String> getEtudiants() {
-        return etudiants;
-    }
-
-    public void setEtudiants(List<String> etudiants) {
-        this.etudiants = etudiants;
-    }
-
     public void setId(int id) {
         this.id = id;
-
-
-
-
     }
+
+//    public List<String> getNom() {
+//        return nom;
+//    }
+//
+//    public void setNom(List<String> nom) {
+//        this.nom = nom;
+//    }
+
+
+
+
+
+
 
 
 

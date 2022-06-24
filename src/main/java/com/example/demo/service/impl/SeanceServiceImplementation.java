@@ -1,9 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.Seance;
-import com.example.demo.model.User;
 import com.example.demo.repository.SeanceRepository;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.service.SeanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
